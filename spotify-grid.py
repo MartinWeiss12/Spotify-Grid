@@ -28,31 +28,31 @@ def make_grid(path, grid_type):
 	list = [f'{path}/{grid_type}-{i}.png' for i in range(1, 50)]
 	
 	for i, img in enumerate(list, start=1):
-		if (i == 1):
+		if i == 1:
 			image = Image.open(img).resize((3200, 3200))
 			grid.paste(image, (2400, 2400))
-		if (i >= 2 and i <= 4):
+		if i >= 2 and i <= 4:
 			image = Image.open(img).resize((1600, 1600))
 			grid.paste(image, (-2400+(i*1600), 800))
-		if (i >= 5 and i <= 8):
+		if i >= 5 and i <= 8:
 			image = Image.open(img).resize((1600, 1600))
 			grid.paste(image, (5600, -7200+(i*1600)))
-		if (i >= 9 and i <= 11):
+		if i >= 9 and i <= 11:
 			image = Image.open(img).resize((1600, 1600))
 			grid.paste(image, (18400-(i*1600), 5600))
-		if (i >= 12 and i <= 13):
+		if i >= 12 and i <= 13:
 			image = Image.open(img).resize((1600, 1600))
 			grid.paste(image, (800, 23200-(i*1600)))
-		if (i >= 14 and i <= 23):
+		if i >= 14 and i <= 23:
 			image = Image.open(img).resize((800, 800))
 			grid.paste(image, (-11200+(i*800), 0))
-		if (i >= 24 and i <= 32):
+		if i >= 24 and i <= 32:
 			image = Image.open(img).resize((800, 800))
 			grid.paste(image, (7200, -18400+(i*800)))
-		if (i >= 33 and i <= 41):
+		if i >= 33 and i <= 41:
 			image = Image.open(img).resize((800, 800))
 			grid.paste(image, (32800-(i*800), 7200))
-		if (i >= 42 and i <= 49):
+		if i >= 42 and i <= 49:
 			image = Image.open(img).resize((800, 800))
 			grid.paste(image, (0, 40000-(i*800)))
 			
