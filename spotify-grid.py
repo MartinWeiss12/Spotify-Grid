@@ -22,7 +22,7 @@ def download_images(folder, type):
 download_images(top_albums, 'Album')
 download_images(top_artists, 'Artist')
 
-def make_grid(path, grid_type):
+def full_grid(path, grid_type):
 	
 	grid = Image.new('RGB', (8000, 8000))
 	list = [f'{path}/{grid_type}-{i}.png' for i in range(1, 50)]
@@ -56,8 +56,34 @@ def make_grid(path, grid_type):
 			image = Image.open(img).resize((800, 800))
 			grid.paste(image, (0, 40000-(i*800)))
 			
-	grid.save(f'{grid_type}-grid.png')
-	return grid
-
-album_grid = make_grid(album_images, 'Album')
-artist_grid = make_grid(artist_images, 'Artist')
+	grid.save(f'{grid_type.lower()}-full-grid.png')
+	
+full_grid(album_images, 'Album')
+full_grid(artist_images, 'Artist')
+	
+def mini_grid(path, grid_type):
+	
+	grid = Image.new('RGB', (8000, 8000))
+	list = [f'{path}/{grid_type}-{i}.png' for i in range(1, 15)]
+	
+	for i, img in enumerate(list, start=1):
+		if i == 1:
+			image = Image.open(img).resize((4000, 4000))
+			grid.paste(image, (2000, 2000))
+		if i >= 2 and i <= 4:
+			image = Image.open(img).resize((2000, 2000))
+			grid.paste(image, (-4000 + (i * 2000), 0))
+		if i >= 5 and i <= 8:
+			image = Image.open(img).resize((2000, 2000))
+			grid.paste(image, (6000, -10000 + (i * 2000)))
+		if i >= 9 and i <= 11:
+			image = Image.open(img).resize((2000, 2000))
+			grid.paste(image, (24000 - (i * 2000), 6000))
+		if i >= 12 and i <= 14:
+			image = Image.open(img).resize((2000, 2000))
+			grid.paste(image, (0, 30000 - (i * 2000)))
+			
+	grid.save(f'{grid_type.lower()}-mini-grid.png')
+	
+mini_grid(album_images, 'Album')
+mini_grid(artist_images, 'Artist')
